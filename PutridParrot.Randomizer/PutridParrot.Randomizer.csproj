@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Company>PutridParrot</Company>
+    <Authors>PutridParrot</Authors>
+    <Description>Extended functionality for Random value generation</Description>
+  </PropertyGroup>
+
+</Project>
