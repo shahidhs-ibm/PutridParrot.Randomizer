@@ -25,3 +25,11 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
     - name: Create Package
       run: dotnet pack --configuration Release
+    - name: Create Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: PutridParrot.Randomizer
+        path: /home/runner/work/PutridParrot.Randomizer/PutridParrot.Randomizer/PutridParrot.Randomizer/bin/Release/PutridParrot.Randomizer.*.nupkg
+    - name: Public to Nuget
+      run: dotnet nuget push /home/runner/work/PutridParrot.Randomizer/PutridParrot.Randomizer/PutridParrot.Randomizer/bin/Release/*.nupkg --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      

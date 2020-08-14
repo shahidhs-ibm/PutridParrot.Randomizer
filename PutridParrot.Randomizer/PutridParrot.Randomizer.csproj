@@ -5,6 +5,8 @@
     <Company>PutridParrot</Company>
     <Authors>PutridParrot</Authors>
     <Description>Extended functionality for Random value generation</Description>
+    <Version>1.0.0-alpha</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
