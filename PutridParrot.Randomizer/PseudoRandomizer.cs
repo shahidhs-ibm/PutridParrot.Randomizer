@@ -8,7 +8,7 @@ namespace PutridParrot.Randomizer
     /// </summary>
     public class PseudoRandomizer : IRandomizer
     {
-        private readonly Random _random;
+        protected readonly Random _random;
 
         public PseudoRandomizer()
         {
@@ -19,35 +19,12 @@ namespace PutridParrot.Randomizer
             _random = new Random(seed);
         }
 
-        public int NextInt(int minValue, int maxValue)
-        {
-            lock (_random)
-            {
-                return _random.Next(minValue, maxValue);
-            }
-        }
+        public virtual int NextInt(int minValue, int maxValue) => _random.Next(minValue, maxValue);
 
-        public double NextDouble(double minValue, double maxValue)
-        {
-            lock (_random)
-            {
-                return _random.NextDouble() * (maxValue - minValue) + minValue;
-            }
-        }
+        public virtual double NextDouble(double minValue, double maxValue) => _random.NextDouble() * (maxValue - minValue) + minValue;
 
-        public void NextBytes(Span<byte> buffer)
-        {
-            lock (_random)
-            {
-                _random.NextBytes(buffer);
-            }
-        }
-        public void NextBytes(byte[] buffer)
-        {
-            lock (_random)
-            {
-                _random.NextBytes(buffer);
-            }
-        }
+        public virtual void NextBytes(Span<byte> buffer) => _random.NextBytes(buffer);
+
+        public virtual void NextBytes(byte[] buffer) => _random.NextBytes(buffer);
     }
 }

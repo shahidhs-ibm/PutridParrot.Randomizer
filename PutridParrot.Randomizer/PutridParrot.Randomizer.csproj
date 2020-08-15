@@ -9,6 +9,8 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/putridparrot/PutridParrot.Randomizer.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
 
 </Project>
