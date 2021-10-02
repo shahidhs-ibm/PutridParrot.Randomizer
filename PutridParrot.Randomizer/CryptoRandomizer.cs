@@ -23,27 +23,20 @@ namespace PutridParrot.Randomizer
 
         public virtual double NextDouble(double minValue, double maxValue)
         {
-            lock (_random)
-            {
-                var data = new byte[sizeof(uint)];
-                _random.GetBytes(data);
-                var randValue = BitConverter.ToUInt32(data, 0);
-                return randValue / (uint.MaxValue + 1.0);
-            }
+            var data = new byte[sizeof(uint)];
+            _random.GetBytes(data);
+            var randValue = BitConverter.ToUInt32(data, 0);
+            return randValue / (uint.MaxValue + 1.0);
         }
+
         public virtual void NextBytes(Span<byte> buffer)
         {
-            lock (_random)
-            {
-                _random.GetBytes(buffer);
-            }
+            _random.GetBytes(buffer);
         }
+
         public virtual void NextBytes(byte[] buffer)
         {
-            lock (_random)
-            {
-                _random.GetBytes(buffer);
-            }
+            _random.GetBytes(buffer);
         }
     }
 }

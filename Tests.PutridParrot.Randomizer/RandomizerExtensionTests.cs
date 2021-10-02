@@ -84,5 +84,46 @@ namespace Tests.PutridParrot.Randomizer
 
             Assert.AreEqual("C", mock.NextItem(array, 0, 3));
         }
+
+        [Test]
+        public void NextInt_ExpectMockValue()
+        {
+            var mock = Mock.Create<IRandomizer>();
+
+            Mock.Arrange(() => mock.NextInt(0, int.MaxValue)).Returns(2);
+
+            Assert.AreEqual(2, mock.NextInt());
+        }
+
+        //[Test]
+        //public void NextLong_ExpectMockValue()
+        //{
+        //    var mock = Mock.Create<IRandomizer>();
+
+        //    Mock.Arrange(() => mock.NextDouble(0, 1)).Returns(809123);
+
+        //    Assert.AreEqual(809123, mock.NextLong());
+        //}
+
+
+        [Test]
+        public void NextDouble_ExpectMockValue()
+        {
+            var mock = Mock.Create<IRandomizer>();
+
+            Mock.Arrange(() => mock.NextDouble(0, double.MaxValue)).Returns(3.14);
+
+            Assert.AreEqual(3.14, mock.NextDouble());
+        }
+
+        [Test]
+        public void NextDoubleWithMax_ExpectMockValue()
+        {
+            var mock = Mock.Create<IRandomizer>();
+
+            Mock.Arrange(() => mock.NextDouble(0, 5)).Returns(3.91);
+
+            Assert.AreEqual(3.91, mock.NextDouble(5));
+        }
     }
 }
