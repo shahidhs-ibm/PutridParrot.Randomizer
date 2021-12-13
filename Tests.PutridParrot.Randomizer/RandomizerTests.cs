@@ -51,7 +51,7 @@ namespace Tests.PutridParrot.Randomizer
         public void NextItem_FromNullArrayExpectNull()
         {
             var randomGenerator = new PseudoRandomizer();
-            Assert.IsNull(randomGenerator.NextItem<string>(null));
+            Assert.IsNull(randomGenerator.NextItem<string>(null!));
         }
 
         [Test]
