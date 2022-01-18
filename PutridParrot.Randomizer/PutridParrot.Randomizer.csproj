@@ -2,16 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+	<ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
 	<Company>PutridParrot</Company>
     <Authors>Mark Timmings</Authors>
     <Description>Extended functionality for Random value generation</Description>
-    <Version>1.0.2-alpha</Version>
+    <Version>1.0.3-alpha</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/putridparrot/PutridParrot.Randomizer.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
-    <FileVersion>1.0.2.0</FileVersion>
+	<PackageIcon>PutridParrot.Randomizer.png</PackageIcon>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+	<None Include="..\PutridParrot.Randomizer.png">
+		<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 </Project>
