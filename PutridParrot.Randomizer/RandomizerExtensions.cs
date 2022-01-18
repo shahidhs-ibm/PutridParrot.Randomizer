@@ -23,6 +23,14 @@ namespace PutridParrot.Randomizer
         /// <returns></returns>
         public static int NextInt(this IRandomizer r, int maxValue) => r.NextInt(0, maxValue);
         /// <summary>
+        /// Returns a random integer greater or equal to the start of the
+        /// Range and less than the end of the Range
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="range"></param>
+        /// <returns></returns>
+        public static int NextInt(this IRandomizer r, Range range) => r.NextInt(range.Start.Value, range.End.Value);
+        /// <summary>
         /// Returns a random double greater or equal to 0 and less
         /// than double.MaxValue
         /// </summary>
