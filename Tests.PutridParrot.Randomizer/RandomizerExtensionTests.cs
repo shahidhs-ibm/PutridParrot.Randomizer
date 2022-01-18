@@ -125,5 +125,15 @@ namespace Tests.PutridParrot.Randomizer
 
             Assert.AreEqual(3.91, mock.NextDouble(5));
         }
+
+        [Test]
+        public void NextIntWithRange_ExpectMockValue()
+        {
+            var mock = Mock.Create<IRandomizer>();
+
+            Mock.Arrange(() => mock.NextInt(1, 5)).Returns(2);
+
+            Assert.AreEqual(2, mock.NextInt(1..5));
+        }
     }
 }
