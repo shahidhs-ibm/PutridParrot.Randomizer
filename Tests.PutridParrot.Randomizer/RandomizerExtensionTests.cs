@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 using PutridParrot.Randomizer;
 using Telerik.JustMock;
 
 namespace Tests.PutridParrot.Randomizer
 {
+    [ExcludeFromCodeCoverage]
     public class RandomizerExtensionTests
     {
         [Test]

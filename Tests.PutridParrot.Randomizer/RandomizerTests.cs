@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using NUnit.Framework;
 using PutridParrot.Randomizer;
@@ -10,6 +11,7 @@ namespace Tests.PutridParrot.Randomizer
     /// is non-deterministic in nature, so these
     /// are more like integration tests
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class RandomizerTests
     {
         [Test]
