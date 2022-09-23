@@ -98,15 +98,36 @@ namespace Tests.PutridParrot.Randomizer
             Assert.AreEqual(2, mock.NextInt());
         }
 
-        //[Test]
-        //public void NextLong_ExpectMockValue()
-        //{
-        //    var mock = Mock.Create<IRandomizer>();
+        [Test]
+        public void NextLong_ExpectMockValue()
+        {
+            var mock = Mock.Create<IRandomizer>();
 
-        //    Mock.Arrange(() => mock.NextDouble(0, 1)).Returns(809123);
+            Mock.Arrange(() => mock.NextDouble(0, 1)).Returns(0.001);
 
-        //    Assert.AreEqual(809123, mock.NextLong());
-        //}
+            Assert.AreEqual(9223372036854776, mock.NextLong());
+        }
+
+        [Test]
+        public void NextLong_WithMax()
+        {
+            var mock = Mock.Create<IRandomizer>();
+
+            Mock.Arrange(() => mock.NextDouble(0, 1)).Returns(0.1);
+
+            Assert.AreEqual(10, mock.NextLong(100));
+        }
+
+        [Test]
+        public void NextLong_WithMinAndMax()
+        {
+            var mock = Mock.Create<IRandomizer>();
+
+            Mock.Arrange(() => mock.NextDouble(0, 1)).Returns(0.1);
+
+            Assert.AreEqual(11, mock.NextLong(1, 100));
+        }
+
 
 
         [Test]
@@ -195,6 +216,22 @@ namespace Tests.PutridParrot.Randomizer
             Mock.Arrange(() => mock.NextInt(0, 2)).Returns(0);
 
             Assert.IsFalse(mock.NextBool(0.3));
+        }
+
+        [Test]
+        public void NextBool_WithProbability_Impossibility()
+        {
+            var randomizer = new PseudoRandomizer();
+
+            Assert.IsFalse(randomizer.NextBool(0.0));
+        }
+
+        [Test]
+        public void NextBool_WithProbability_Certainty()
+        {
+            var randomizer = new PseudoRandomizer();
+
+            Assert.IsTrue(randomizer.NextBool(1.0));
         }
     }
 }
