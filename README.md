@@ -7,4 +7,8 @@
 [![GitHub Issues](https://img.shields.io/github/issues/putridparrot/PutridParrot.Randomizer.svg)](https://github.com/putridparrot/PutridParrot.Randomizer/issues)
 
 
-Extended functionality for Random value generation, includes Concurrent implementation and non-concurrent versions.
+Extended functionality for Random value generation, includes Concurrent implementation and non-concurrent versions as well as Crypto versions. 
+
+The main aim of this package was three-fold - firstly to create a random number generator interface for mocking out random number generation, secondly to add a thread-safe implementation and thirdly to add extensions to give more functionality to the random number generator.
+
+The core IRandomizer implementations supply the low-level random number generation code, whilst the extension methods supply additions to these, such as generated random strings, dates, etc.
