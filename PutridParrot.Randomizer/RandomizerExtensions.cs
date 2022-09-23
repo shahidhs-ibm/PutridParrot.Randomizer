@@ -15,6 +15,7 @@ namespace PutridParrot.Randomizer
         /// </summary>
         /// <param name="r">The randomizer instance</param>
         /// <returns>An integer between 0 and less than int.MaxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static int NextInt(this IRandomizer r)
         {
             if(r == null)
@@ -30,6 +31,7 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="maxValue"></param>
         /// <returns>An integer between 0 and less than maxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static int NextInt(this IRandomizer r, int maxValue)
         {
             if (r == null)
@@ -39,12 +41,30 @@ namespace PutridParrot.Randomizer
         }
 
         /// <summary>
+        /// Returns a random integer greater or equal to minValue and less
+        /// than the supplied maxValue
+        /// </summary>
+        /// <param name="r">The randomizer instance</param>
+        /// <param name="minValue"></param>
+        /// <param name="maxValue"></param>
+        /// <returns>An integer between 0 and less than maxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static int NextInt(this IRandomizer r, int minValue, int maxValue)
+        {
+            if (r == null)
+                throw new ArgumentNullException(nameof(r));
+
+            return r.NextInt(minValue, maxValue);
+        }
+
+        /// <summary>
         /// Returns a random integer greater or equal to the start of the
         /// Range and less than the end of the Range
         /// </summary>
         /// <param name="r">The randomizer instance</param>
         /// <param name="range"></param>
         /// <returns>An integer between start of the range and less that end of the range</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static int NextInt(this IRandomizer r, Range range)
         {
             if (r == null)
@@ -59,6 +79,7 @@ namespace PutridParrot.Randomizer
         /// </summary>
         /// <param name="r">The randomizer instance</param>
         /// <returns>An byte between 0 and less than byte.MaxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static int NextByte(this IRandomizer r)
         {
             if (r == null)
@@ -74,12 +95,30 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="maxValue"></param>
         /// <returns>An byte  between 0 and less than maxValue</returns>
-        public static int NextByte(this IRandomizer r, byte maxValue)
+        /// <exception cref="ArgumentNullException"></exception>
+        public static byte NextByte(this IRandomizer r, byte maxValue)
         {
             if (r == null)
                 throw new ArgumentNullException(nameof(r));
 
-            return r.NextInt(0, maxValue);
+            return (byte)r.NextInt(0, maxValue);
+        }
+
+        /// <summary>
+        /// Returns a random byte greater or equal to minValue and less
+        /// than the supplied maxValue
+        /// </summary>
+        /// <param name="r">The randomizer instance</param>
+        /// <param name="minValue"></param>
+        /// <param name="maxValue"></param>
+        /// <returns>An byte  between 0 and less than maxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static byte NextByte(this IRandomizer r, byte minValue, byte maxValue)
+        {
+            if (r == null)
+                throw new ArgumentNullException(nameof(r));
+
+            return (byte)r.NextInt(minValue, maxValue);
         }
 
         /// <summary>
@@ -89,6 +128,7 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="range"></param>
         /// <returns>An byte between start of the range and less that end of the range</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static byte NextByte(this IRandomizer r, Range range)
         {
             if (r == null)
@@ -98,17 +138,18 @@ namespace PutridParrot.Randomizer
         }
 
         /// <summary>
-        /// Returns a random double greater or equal to 0 and less
-        /// than double.MaxValue
+        /// Returns a random double greater or equal to 0.0 and less
+        /// than 1.0
         /// </summary>
         /// <param name="r">The randomizer instance</param>
-        /// <returns>A double between 0 and less than double.MaxValue</returns>
+        /// <returns>A double between 0.0 and less than 1.0</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static double NextDouble(this IRandomizer r)
         {
             if (r == null)
                 throw new ArgumentNullException(nameof(r));
 
-            return r.NextDouble(0, double.MaxValue);
+            return r.NextDouble(0.0, 1.0);
         }
 
         /// <summary>
@@ -118,6 +159,7 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="maxValue"></param>
         /// <returns>A double between 0 and less than maxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static double NextDouble(this IRandomizer r, double maxValue)
         {
             if (r == null)
@@ -127,11 +169,29 @@ namespace PutridParrot.Randomizer
         }
 
         /// <summary>
+        /// Returns a random double greater or equal to 0 and less
+        /// than the supplied maxValue
+        /// </summary>
+        /// <param name="r">The randomizer instance</param>
+        /// <param name="minValue"></param>
+        /// <param name="maxValue"></param>
+        /// <returns>A double between 0 and less than maxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static double NextDouble(this IRandomizer r, double minValue, double maxValue)
+        {
+            if (r == null)
+                throw new ArgumentNullException(nameof(r));
+
+            return r.NextDouble(minValue, maxValue);
+        }
+
+        /// <summary>
         /// Returns a random long greater or equal to 0 and less
         /// than long.MaxValue
         /// </summary>
         /// <param name="r">The randomizer instance</param>
         /// <returns>A long between 0 and less than long.MaxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static long NextLong(this IRandomizer r)
         {
             if (r == null)
@@ -147,6 +207,7 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="maxValue"></param>
         /// <returns>A long between 0 and less than maxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static long NextLong(this IRandomizer r, long maxValue)
         {
             if (r == null)
@@ -163,6 +224,7 @@ namespace PutridParrot.Randomizer
         /// <param name="minValue"></param>
         /// <param name="maxValue"></param>
         /// <returns>An long between minValue and less than maxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static long NextLong(this IRandomizer r, long minValue, long maxValue)
         {
             if (r == null)
@@ -176,6 +238,7 @@ namespace PutridParrot.Randomizer
         /// </summary>
         /// <param name="r">The randomizer instance</param>
         /// <returns>A boolean, true or false</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static bool NextBool(this IRandomizer r)
         {
             if (r == null)
@@ -195,6 +258,7 @@ namespace PutridParrot.Randomizer
         /// <param name="probability">The probability threshold</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         public static bool NextBool(this IRandomizer r, double probability)
         {
             if (r == null)
@@ -205,7 +269,7 @@ namespace PutridParrot.Randomizer
             if (probability >= 1)
                 return true;
 
-            return r.NextDouble() >= probability;
+            return r.NextDouble(0.0, 1.0) >= probability;
         }
 
 
@@ -215,6 +279,7 @@ namespace PutridParrot.Randomizer
         /// </summary>
         /// <param name="r">The randomizer instance</param>
         /// <returns>A DateTime between DateTime.Now and less than DateTime.MaxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static DateTime NextDateTime(this IRandomizer r)
         {
             if (r == null)
@@ -230,6 +295,7 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="endDateTime"></param>
         /// <returns>A DateTime between DateTime.Now and less than endDateTime</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static DateTime NextDateTime(this IRandomizer r, DateTime endDateTime)
         {
             if (r == null)
@@ -246,6 +312,7 @@ namespace PutridParrot.Randomizer
         /// <param name="startDateTime"></param>
         /// <param name="endDateTime"></param>
         /// <returns>A DateTime between startDateTime and less than endDateTime</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static DateTime NextDateTime(this IRandomizer r, DateTime startDateTime, DateTime endDateTime)
         {
             if (r == null)
@@ -260,6 +327,7 @@ namespace PutridParrot.Randomizer
         /// </summary>
         /// <param name="r">The randomizer instance</param>
         /// <returns>A DateTime between DateTime.Now and less than DateTime.MaxValue</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static DateTime NextDate(this IRandomizer r) => 
             r.NextDateTime().Date;
 
@@ -270,6 +338,7 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="endDateTime"></param>
         /// <returns>A DateTime between DateTime.Now and less than endDateTime</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static DateTime NextDate(this IRandomizer r, DateTime endDateTime) =>
             r.NextDateTime(endDateTime).Date;
 
@@ -281,6 +350,7 @@ namespace PutridParrot.Randomizer
         /// <param name="startDateTime"></param>
         /// <param name="endDateTime"></param>
         /// <returns>A DateTime between startDateTime and less than endDateTime</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static DateTime NextDate(this IRandomizer r, DateTime startDateTime, DateTime endDateTime) =>
             r.NextDateTime(startDateTime, endDateTime).Date;
 
@@ -293,11 +363,9 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="items"></param>
         /// <returns>An item randomly selected from the list of items</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static T NextItem<T>(this IRandomizer r, IList<T> items)
         {
-            if (r == null)
-                throw new ArgumentNullException(nameof(r));
-
             return r.NextItem(items, 0, items?.Count ?? 0);
         }
 
@@ -311,11 +379,9 @@ namespace PutridParrot.Randomizer
         /// <param name="items"></param>
         /// <param name="maxIndex"></param>
         /// <returns>An item randomly selected from the list of items but less than maxIndex</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static T NextItem<T>(this IRandomizer r, IList<T> items, int maxIndex)
         {
-            if (r == null)
-                throw new ArgumentNullException(nameof(r));
-
             return r.NextItem(items, 0, maxIndex);
         }
 
@@ -330,6 +396,7 @@ namespace PutridParrot.Randomizer
         /// <param name="minIndex"></param>
         /// <param name="maxIndex"></param>
         /// <returns>An item from the list of items, starting at minIndex and with an index less than maxIndex</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static T NextItem<T>(this IRandomizer r, IList<T> items, int minIndex, int maxIndex)
         {
             if (r == null)
@@ -350,6 +417,7 @@ namespace PutridParrot.Randomizer
         /// <typeparam name="TEnum"></typeparam>
         /// <param name="r">The randomizer instance</param>
         /// <returns>A random enum value from the TEnum</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static TEnum NextItem<TEnum>(this IRandomizer r)
             where TEnum : Enum
         {
@@ -367,11 +435,9 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="items"></param>
         /// <returns>A random item within the params array</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static T NextItem<T>(this IRandomizer r, params T[] items)
         {
-            if (r == null)
-                throw new ArgumentNullException(nameof(r));
-
             if (items == null || items.Length == 0)
                 return default;
 
@@ -386,6 +452,7 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <param name="items"></param>
         /// <returns>A randomized list of the supplied items</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static IList<T> Shuffle<T>(this IRandomizer r, IList<T> items)
         {
             if (r == null)
@@ -408,7 +475,7 @@ namespace PutridParrot.Randomizer
         ///
         /// <see href="https://stackoverflow.com/questions/218060/random-gaussian-variables">source</see>
         /// </summary>
-        /// <param name="r"></param>
+        /// <param name="r">The randomizer instance</param>
         /// <param name="mu"></param>
         /// <param name="sigma"></param>
         /// <returns></returns>
@@ -423,35 +490,54 @@ namespace PutridParrot.Randomizer
             var u2 = 1.0 - r.NextDouble();
             // random normal(0,1)
             var randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
-            // random normal(mean,stdDev^2)
+            // random normal(mean, stdDev^2)
             return mu + sigma * randStdNormal;
         }
 
         /// <summary>
-        /// Returns a random string of given length mad up of characters
+        /// Returns a random string of given length made up of characters
         /// from the supplied charset.
         /// </summary>
-        /// <param name="r"></param>
-        /// <param name="length"></param>
-        /// <param name="charset"></param>
+        /// <param name="r">The randomizer instance</param>
+        /// <param name="length">The length of the returned string</param>
+        /// <param name="charset">The character set to choose chars from</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
         public static string NextString(this IRandomizer r, int length, string charset)
         {
-            if (r == null)
-                throw new ArgumentNullException(nameof(r));
-
             if (String.IsNullOrEmpty(charset))
                 throw new ArgumentException(nameof(charset));
 
-            var s = new char[length];
+            var chars = charset.ToCharArray();
+            return new string(r.NextList(length, chars).ToArray());
+        }
+
+        /// <summary>
+        /// Returns a list of given length with items taken from the
+        /// supplied items list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="r"></param>
+        /// <param name="length"></param>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        public static IList<T> NextList<T>(this IRandomizer r, int length, IList<T> items)
+        {
+            if (r == null)
+                throw new ArgumentNullException(nameof(r));
+            if (items == null || items.Count == 0)
+                throw new ArgumentException(nameof(items));
+
+            var array = new T[length];
             for (var i = 0; i < length; i++)
             {
-                s[i] = charset[r.NextInt(charset.Length)];
+                array[i] = items[r.NextInt(items.Count)];
             }
 
-            return new string(s);
+            return array;
         }
     }
 }

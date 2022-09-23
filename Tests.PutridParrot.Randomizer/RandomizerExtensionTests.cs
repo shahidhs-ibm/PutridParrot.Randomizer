@@ -114,9 +114,9 @@ namespace Tests.PutridParrot.Randomizer
         {
             var mock = Mock.Create<IRandomizer>();
 
-            Mock.Arrange(() => mock.NextDouble(0, double.MaxValue)).Returns(3.14);
+            Mock.Arrange(() => mock.NextDouble(0.0, 1.0)).Returns(0.45);
 
-            Assert.AreEqual(3.14, mock.NextDouble());
+            Assert.AreEqual(0.45, mock.NextDouble());
         }
 
         [Test]
@@ -185,6 +185,16 @@ namespace Tests.PutridParrot.Randomizer
             Mock.Arrange(() => mock.NextInt(0, 6)).Returns(5).InSequence();
 
             Assert.AreEqual("c23", mock.NextString(3, "abc123"));
+        }
+
+        [Test]
+        public void NextBool_WithProbability()
+        {
+            var mock = Mock.Create<IRandomizer>();
+
+            Mock.Arrange(() => mock.NextInt(0, 2)).Returns(0);
+
+            Assert.IsFalse(mock.NextBool(0.3));
         }
     }
 }
