@@ -4,7 +4,7 @@ namespace PutridParrot.Randomizer
 {
     /// <summary>
     /// Implementation of IRandomizer based upon the pseudo random
-    /// generator Random
+    /// generator <see cref="System.Random"/>
     /// </summary>
     public class PseudoRandomizer : IRandomizer
     {

@@ -3,7 +3,8 @@
 namespace PutridParrot.Randomizer
 {
     /// <summary>
-    /// Thread-safe PseudoRandomizer
+    /// Implementation of a threadsafe <see cref="IRandomizer"/> based upon
+    /// the pseudo random generator <see cref="PseudoRandomizer"/> 
     /// </summary>
     public class ConcurrentPseudoRandomizer : PseudoRandomizer
     {

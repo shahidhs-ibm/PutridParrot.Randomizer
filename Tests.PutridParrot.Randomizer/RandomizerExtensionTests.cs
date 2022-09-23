@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection.PortableExecutable;
 using NUnit.Framework;
 using PutridParrot.Randomizer;
 using Telerik.JustMock;
@@ -136,6 +137,54 @@ namespace Tests.PutridParrot.Randomizer
             Mock.Arrange(() => mock.NextInt(1, 5)).Returns(2);
 
             Assert.AreEqual(2, mock.NextInt(1..5));
+        }
+
+        [Test]
+        public void Shuffle_WithKnownRndValues_ExpectArrayReversed()
+        {
+            var mock = Mock.Create<IRandomizer>();
+
+            Mock.Arrange(() => mock.NextInt(0, 3)).Returns(0);
+            Mock.Arrange(() => mock.NextInt(0, 2)).Returns(1);
+            Mock.Arrange(() => mock.NextInt(0, 1)).Returns(2);
+
+            Assert.AreEqual(new[] { 3, 2, 1 }, mock.Shuffle(new[] { 1, 2, 3 }));
+        }
+
+        private enum TestEnum
+        {
+            First,
+            Second,
+            Third
+        }
+
+        [Test]
+        [Repeat(100)]
+        public void NextItem_WithEnum()
+        {
+            var randomizer = new PseudoRandomizer(0);
+            Assert.AreEqual(TestEnum.Third, randomizer.NextItem<TestEnum>());
+        }
+
+        [Test]
+        [Repeat(100)]
+        public void NextItem_WithParams()
+        {
+            var randomizer = new PseudoRandomizer(0);
+
+            Assert.AreEqual(4, randomizer.NextItem(1, 2, 3, 4, 5));
+        }
+
+        [Test]
+        public void NextString_WithCharSet()
+        {
+            var mock = Mock.Create<IRandomizer>();
+
+            Mock.Arrange(() => mock.NextInt(0, 6)).Returns(2).InSequence();
+            Mock.Arrange(() => mock.NextInt(0, 6)).Returns(4).InSequence();
+            Mock.Arrange(() => mock.NextInt(0, 6)).Returns(5).InSequence();
+
+            Assert.AreEqual("c23", mock.NextString(3, "abc123"));
         }
     }
 }

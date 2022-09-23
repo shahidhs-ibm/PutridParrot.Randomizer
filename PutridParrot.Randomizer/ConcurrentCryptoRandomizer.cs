@@ -3,7 +3,7 @@
 namespace PutridParrot.Randomizer
 {
     /// <summary>
-    /// Thread-safe CryptoRandomizer
+    /// Thread-safe <see cref="CryptoRandomizer"/> 
     /// </summary>
     public class ConcurrentCryptoRandomizer : CryptoRandomizer
     {

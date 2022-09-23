@@ -12,14 +12,14 @@ namespace PutridParrot.Randomizer
         /// </summary>
         /// <param name="minValue"></param>
         /// <param name="maxValue"></param>
-        /// <returns></returns>
+        /// <returns>A random int greater or equal to minValue and less than maxValue</returns>
         int NextInt(int minValue, int maxValue);
         /// <summary>
         /// Returns a random double greater or equal to minValue but less than maxValue
         /// </summary>
         /// <param name="minValue"></param>
         /// <param name="maxValue"></param>
-        /// <returns></returns>
+        /// <returns>A random double greater or equal to minValue and less than maxValue</returns>
         double NextDouble(double minValue, double maxValue);
         /// <summary>
         /// Populates a buffer with random byes
