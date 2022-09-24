@@ -3,6 +3,8 @@ name: .NET Core
 on:
   push:
     branches: [ master ]
+    paths-ignore:
+      - '**.md'    # Don't build if README or other .md changes
   pull_request:
     branches: [ master ]
   workflow_dispatch: # Manual Run

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection.PortableExecutable;
 using NUnit.Framework;
 using PutridParrot.Randomizer;
 using Telerik.JustMock;
@@ -39,7 +38,6 @@ namespace Tests.PutridParrot.Randomizer
             var endDate = startDate.AddDays(5);
 
             Mock.Arrange(() => mock.NextInt(0, 5)).Returns(2);
-
             Assert.AreEqual(startDate.AddDays(2).Date, mock.NextDateTime(startDate, endDate));
         }
 
@@ -184,7 +182,7 @@ namespace Tests.PutridParrot.Randomizer
         public void NextItem_WithEnum()
         {
             var randomizer = new PseudoRandomizer(0);
-            Assert.AreEqual(TestEnum.Third, randomizer.NextItem<TestEnum>());
+            Assert.AreEqual(TestEnum.Third, randomizer.NextEnum<TestEnum>());
         }
 
         [Test]

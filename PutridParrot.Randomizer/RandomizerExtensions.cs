@@ -355,7 +355,7 @@ namespace PutridParrot.Randomizer
             r.NextDateTime(startDateTime, endDateTime).Date;
 
         /// <summary>
-        /// Returns a random item from an array from index equal to or greater
+        /// Returns a random item from a list with an index equal to or greater
         /// than 0 index and less than the length of the array. If no array is supplied
         /// or if the index is outside of the range if the array, default(T) is return
         /// </summary>
@@ -418,7 +418,7 @@ namespace PutridParrot.Randomizer
         /// <param name="r">The randomizer instance</param>
         /// <returns>A random enum value from the TEnum</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static TEnum NextItem<TEnum>(this IRandomizer r)
+        public static TEnum NextEnum<TEnum>(this IRandomizer r)
             where TEnum : Enum
         {
             if (r == null)
@@ -518,9 +518,9 @@ namespace PutridParrot.Randomizer
         /// supplied items list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="r"></param>
-        /// <param name="length"></param>
-        /// <param name="items"></param>
+        /// <param name="r">The randomizer instance</param>
+        /// <param name="length">The length of the return list</param>
+        /// <param name="items">The set of items to choose values from</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
