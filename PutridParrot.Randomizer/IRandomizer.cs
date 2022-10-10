@@ -3,7 +3,9 @@
 namespace PutridParrot.Randomizer
 {
     /// <summary>
-    /// Generates random values
+    /// Describes the core functionality required for random value
+    /// generator implementations. By implementing this interface
+    /// the implementations can make use of the extension methods
     /// </summary>
     public interface IRandomizer
     {
@@ -22,12 +24,12 @@ namespace PutridParrot.Randomizer
         /// <returns>A random double greater or equal to minValue and less than maxValue</returns>
         double NextDouble(double minValue, double maxValue);
         /// <summary>
-        /// Populates a buffer with random byes
+        /// Populates a buffer with random bytes
         /// </summary>
         /// <param name="buffer"></param>
         void NextBytes(Span<byte> buffer);
         /// <summary>
-        /// Populates a buffer with random byes
+        /// Populates a buffer with random bytes
         /// </summary>
         /// <param name="buffer"></param>
         void NextBytes(byte[] buffer);

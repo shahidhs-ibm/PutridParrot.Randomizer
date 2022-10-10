@@ -3,31 +3,48 @@
 namespace PutridParrot.Randomizer
 {
     /// <summary>
-    /// Thread-safe <see cref="CryptoRandomizer"/> 
+    /// Thread-safe implementation of the crypto based random
+    /// generator
     /// </summary>
-    public class ConcurrentCryptoRandomizer : CryptoRandomizer
+    public class ConcurrentCryptoRandomizer : IRandomizer
     {
-        public override double NextDouble(double minValue, double maxValue)
+        protected readonly CryptoRandomizer _random;
+
+        public ConcurrentCryptoRandomizer()
         {
-            lock (_random)
-            {
-                return base.NextDouble(minValue, maxValue);
-            }
+            _random = new CryptoRandomizer();
         }
-        public override void NextBytes(Span<byte> buffer)
+
+        public int NextInt(int minValue, int maxValue)
         {
             lock (_random)
             {
-                base.NextBytes(buffer);
-            }
-        }
-        public override void NextBytes(byte[] buffer)
-        {
-            lock (_random)
-            {
-                base.NextBytes(buffer);
+                return _random.NextInt(minValue, maxValue);
             }
         }
 
+        public double NextDouble(double minValue, double maxValue)
+        {
+            lock (_random)
+            {
+                return _random.NextDouble(minValue, maxValue);
+            }
+        }
+
+        public void NextBytes(Span<byte> buffer)
+        {
+            lock (_random)
+            {
+                _random.NextBytes(buffer);
+            }
+        }
+
+        public void NextBytes(byte[] buffer)
+        {
+            lock (_random)
+            {
+                _random.NextBytes(buffer);
+            }
+        }
     }
 }

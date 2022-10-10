@@ -21,7 +21,7 @@ namespace PutridParrot.Randomizer
             return RandomNumberGenerator.GetInt32(minValue, maxValue);
         }
 
-        public virtual double NextDouble(double minValue, double maxValue)
+        public double NextDouble(double minValue, double maxValue)
         {
             var data = new byte[sizeof(uint)];
             _random.GetBytes(data);
@@ -29,12 +29,12 @@ namespace PutridParrot.Randomizer
             return randValue / (uint.MaxValue + 1.0);
         }
 
-        public virtual void NextBytes(Span<byte> buffer)
+        public void NextBytes(Span<byte> buffer)
         {
             _random.GetBytes(buffer);
         }
 
-        public virtual void NextBytes(byte[] buffer)
+        public void NextBytes(byte[] buffer)
         {
             _random.GetBytes(buffer);
         }

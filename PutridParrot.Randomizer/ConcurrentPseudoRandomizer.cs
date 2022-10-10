@@ -3,39 +3,51 @@
 namespace PutridParrot.Randomizer
 {
     /// <summary>
-    /// Implementation of a threadsafe <see cref="IRandomizer"/> based upon
-    /// the pseudo random generator <see cref="PseudoRandomizer"/> 
+    /// Implementation of a threadsafe <see cref="IRandomizer"/>
     /// </summary>
-    public class ConcurrentPseudoRandomizer : PseudoRandomizer
+    public class ConcurrentPseudoRandomizer : IRandomizer
     {
-        public override int NextInt(int minValue, int maxValue)
+        private readonly PseudoRandomizer _random;
+
+        public ConcurrentPseudoRandomizer()
+        {
+            _random = new PseudoRandomizer();
+        }
+
+        public ConcurrentPseudoRandomizer(int seed)
+        {
+            _random = new PseudoRandomizer(seed);
+        }
+
+        public int NextInt(int minValue, int maxValue)
         {
             lock (_random)
             {
-                return base.NextInt(minValue, maxValue);
+                return _random.NextInt(minValue, maxValue);
             }
         }
 
-        public override double NextDouble(double minValue, double maxValue)
+        public double NextDouble(double minValue, double maxValue)
         {
             lock (_random)
             {
-                return base.NextDouble(minValue, maxValue);
+                return _random.NextDouble();
             }
         }
 
-        public override void NextBytes(Span<byte> buffer)
+        public void NextBytes(Span<byte> buffer)
         {
             lock (_random)
             {
-                base.NextBytes(buffer);
+                _random.NextBytes(buffer);
             }
         }
-        public override void NextBytes(byte[] buffer)
+
+        public void NextBytes(byte[] buffer)
         {
             lock (_random)
             {
-                base.NextBytes(buffer);
+                _random.NextBytes(buffer);
             }
         }
     }
